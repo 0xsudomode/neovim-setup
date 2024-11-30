@@ -1,15 +1,17 @@
 # Step 1: Install Neovim
 
-    For Linux (Debian/Ubuntu):
+For Linux (Debian/Ubuntu):
 
+```
 sudo apt update
 sudo apt install neovim
+```
 
 For macOS (using Homebrew):
 
-    brew install neovim
+```brew install neovim```
 
-    For Windows:
+For Windows:
         Download the latest release from Neovim's GitHub page.
         Install the .msi file.
 
@@ -17,12 +19,12 @@ For macOS (using Homebrew):
 
 The most popular package manager for Neovim is lazy.nvim.
 
-    Clone lazy.nvim:
+Clone lazy.nvim:
 
-git clone https://github.com/folke/lazy.nvim ~/.local/share/nvim/lazy/lazy.nvim
+```git clone https://github.com/folke/lazy.nvim ~/.local/share/nvim/lazy/lazy.nvim```
 
 Add lazy.nvim to your Neovim configuration. Create a ~/.config/nvim/init.lua file and add the following:
-
+```lua
     -- Lazy.nvim setup
     local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
     if not vim.loop.fs_stat(lazypath) then
@@ -35,26 +37,27 @@ Add lazy.nvim to your Neovim configuration. Create a ~/.config/nvim/init.lua fil
         })
     end
     vim.opt.rtp:prepend(lazypath)
-
+```
 # Step 3: Install Python Support
 
-    Ensure you have Python installed.
+ Ensure you have Python installed.
         Use python3 --version or python --version to check.
         If not installed, install it based on your OS:
-            Ubuntu/Debian: sudo apt install python3
-            macOS: brew install python
-            Windows: Download from python.org.
+            Ubuntu/Debian: ```sudo apt install python3```
+            macOS: ```brew install python```
+            Windows: ```Download from python.org.```
 
-    Install the Neovim Python client in your global Python environment:
+Install the Neovim Python client in your global Python environment:
 
     pip install pynvim
 
-    If you use virtual environments (like venv), activate the environment before installing pynvim.
+If you use virtual environments (like venv), activate the environment before installing pynvim.
 
 # Step 4: Configure Neovim for Python Development
 
 Add the following to ~/.config/nvim/init.lua:
 
+```lua
 -- Lazy.nvim initialization
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -111,12 +114,12 @@ require("lazy").setup({
         "hrsh7th/vim-vsnip",
     },
 })
-
+```
 # Step 5: Install LSP and Tools
 
-    Install pyright for Python language support:
+Install pyright for Python language support:
 
-sudo npm install -g pyright
+```sudo npm install -g pyright```
 
 If you don't have Node.js, install it via:
 
@@ -127,18 +130,18 @@ Open Neovim and run:
 
     :Lazy
 
-    This will install all the plugins defined in your init.lua.
+This will install all the plugins defined in your init.lua.
 
 # Step 6: Verify Configuration
 
-    Open a Python file in Neovim:
+Open a Python file in Neovim:
 
     nvim example.py
 
-    Check if LSP is working:
+Check if LSP is working:
         Hover over a function: K
         Go to definition: gd
         See diagnostics: :LspDiagnostics
 
-    Check if autocomplete works by typing in a Python function.
+Check if autocomplete works by typing in a Python function.
 
